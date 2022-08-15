@@ -5,18 +5,6 @@ from flask_cors import CORS
 # configuration
 DEBUG = True
 
-"""
-MOOCs = [
-    {
-        'title': 'Coursera',
-        'courses': ["DeepLearning", "Crypto-I"]
-    },
-    {
-        'title': 'Stepik',
-        'courses': ["Web-1", "JS-1"]
-    }
-]
-"""
 
 MOOCs = [
     {
