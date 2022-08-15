@@ -5,4 +5,4 @@ split "Course" component into several
 
 run:
 1. run app.py
-2. npm serve run
+2. npm run serve
