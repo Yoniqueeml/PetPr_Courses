@@ -1,4 +1,4 @@
 to do:
-animations on pages
-padding video 
-background
+<br>animations on pages
+<br>padding video 
+<br>background
