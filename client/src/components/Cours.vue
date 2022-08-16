@@ -2,181 +2,152 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-10">
-        <table v-if="showSites" class="table table-hover">
-          <h1>Sites</h1>
+        <h1 class="col-md-6 mb-4 wow zoomIn">MOOCs</h1>
+        <hr><br>
+        <button type="button" class="btn btn-primary"
+           v-if="showCourses || showCourseMaterial" v-on:click="getMoocs">Вернуться к ресурсам
+        </button>
+        <table v-if="showMoocs" class="table table-dark">
+          <thead>
+          <tr>
+            <th class="text-center" scope="col" colspan="100%" >Названия ресурсов</th>
+          </tr>
+          </thead>
           <tbody>
-            <tr v-for="(sites, index) in courses" :key="index">
-              <td>{{ sites.title }}</td>
-              <td>
-                <div class="btn-group" role="group">
-                  <button
-                          type="button"
-                          class="btn btn-warning btn-sm"
-                          @click="goCourses(sites.title)">
-                      Go
-                  </button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table v-if="showCourses" class="table table-hover">
-          <tbody>
-          <h1>{{this.curr_site}}</h1>
-          <tr v-for="(cs,index) in courses" :key="index">
-            <td>{{ index }}</td>
-            <td>
-              <div class="btn-group" role="group">
-                <button
-                  type="button"
-                  class="btn btn-warning btn-sm"
-                  @click="goCourse(index, cs), curr_course = index">
-                  Go
-                </button>
-              </div>
-            </td>
+          <tr v-for="(mooc, index) in moocs" :key="index">
+            <td><button type="button" class="btn btn-light btn-outline-secondary btn-block"
+                        v-on:click="getCourses(mooc)" :value="mooc">{{ mooc }}
+            </button></td>
           </tr>
           </tbody>
         </table>
-        <table v-if="showCourse" class="table table-hover">
+
+        <table v-if="showCourses" class="table table-hover table-bordered table-dark">
+          <thead>
+          <tr>
+            <th class="text-center" scope="col" colspan="100%">Доступные курсы</th>
+          </tr>
+          </thead>
           <tbody>
-          <h1>{{this.curr_course}}</h1>
-          <td>{{this.curr_site}}</td>
+          <tr class="text-center" v-for="(course, index) in courses" :key="index">
             <td>
-                <button type="button" class="btn btn-warning btn-sm"
-                        @click="wv1=!wv1">Week 1 - Show/Hide</button>
-              <div v-if="wv1">
-                <tr v-for="k in week_items['1']" :key="k">
-                  <td class="btn-group" role="group">
-                      {{k}}
-                  </td>
-                </tr>
-              </div>
+              <button class="btn btn-light btn-outline-secondary"
+                      v-on:click="getCourseMaterial(course.acronym)" :value="course.acronym">
+                {{course.acronym}} : {{ course.title }}
+              </button>
             </td>
-          <td>
-            <button type="button" class="btn btn-warning btn-sm"
-                    @click="wv2=!wv2">Week 2 - Show/Hide</button>
-            <div v-if="wv2">
-              <tr v-for="k in week_items['2']" :key="k">
-                <td class="btn-group" role="group">
-                    {{k}}
-                </td>
-              </tr>
-            </div>
-          </td>
-          <td v-if="3<=weeks_numb">
-            <button type="button" class="btn btn-warning btn-sm"
-                    @click="wv3=!wv3">Week 3 - Show/Hide</button>
-            <div v-if="wv3">
-              <tr v-for="k in week_items['3']" :key="k">
-                <td class="btn-group" role="group">
-                  <button type="button"
-                          class="btn tn-warning btn-sm"
-                          @click="console.log('123')"
-                  >{{k}}</button>
-                </td>
-              </tr>
-            </div>
-          </td>
-          <td v-if="4<=weeks_numb">
-            <button type="button" class="btn btn-warning btn-sm"
-                    @click="wv4=!wv4">Week 4 - Show/Hide</button>
-            <div v-if="wv4">
-              <tr v-for="k in week_items['4']" :key="k">
-                <td class="btn-group" role="group">
-                  <button type="button"
-                          class="btn tn-warning btn-sm"
-                          @click="console.log('123')"
-                  >{{k}}</button>
-                </td>
-              </tr>
-            </div>
-          </td>
+            <td class="text-center" v-for="(week, j) in course.weeks" :key="j">{{week}}</td>
+          </tr>
           </tbody>
         </table>
+
+        <div v-if="showCourseMaterial">
+          <video class="embed-responsive-item"
+                 v-if="video" :key="video" controls width="500" height="400">
+            <source :src="video">
+          </video>
+          <h1 role="button" class="list-group" style="padding-left: 16px;">
+            <details open v-for="(week, index) in courseMaterial.weeks_info" :key="index">
+              <summary class="btn bg-dark text-white">{{week.week_title}}</summary>
+              <h2 class="list-group" style="padding-left: 24px;">
+                <li v-for="(video, j) in week.videos" :key="j">
+                  <button class="btn bg-secondary text-white"
+                          v-on:click="getVideo(week.week_title, video)"> {{ video }} </button></li>
+              </h2>
+            </details>
+          </h1>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script type="text/javascript">
 import axios from 'axios';
 
 export default {
   data() {
     return {
+      video: '',
+      moocs: [],
       courses: [],
-      week_items: [{}],
-      curr_site: '',
-      wv1: false,
-      wv2: false,
-      wv3: false,
-      wv4: false,
-      curr_course: '',
-      weeks_numb: 0,
-      addBookForm: {
-        title: '',
-      },
-      message: '',
-      showSites: true,
+      courseMaterial: [],
+      showMoocs: true,
       showCourses: false,
-      showCourse: false,
+      showCourseMaterial: false,
+      constructedString: '',
     };
   },
-  components: {
-  },
   methods: {
-    getCourses() {
+    getMoocs() {
       const path = 'http://localhost:5000/';
       axios.get(path)
         .then((res) => {
-          this.courses = res.data.sites;
+          console.log(res);
+          this.moocs = res.data.moocs;
+          this.showMoocs = true;
+          this.showCourses = false;
+          this.showCourseMaterial = false;
+          this.constructedString = '';
+          this.video = '';
         })
         .catch((error) => {
           // eslint-disable-next-line
           console.error(error);
         });
     },
-    goCourses(site) {
-      this.showCourses = true;
-      this.showSites = false;
-      let path = 'http://localhost:5000/';
-      path += site;
-      this.curr_site = site;
+    getCourses(moocTitle) {
+      const path = `http://localhost:5000/${moocTitle}`;
+      console.log(path);
       axios.get(path)
         .then((res) => {
-          this.courses = res.data;
+          console.log(res);
+          this.courses = res.data.courses;
+          this.showMoocs = false;
+          this.showCourses = true;
+          this.showCourseMaterial = false;
+          this.constructedString = moocTitle;
         })
         .catch((error) => {
           // eslint-disable-next-line
           console.error(error);
         });
     },
-    goCourse(index) {
-      this.showCourses = false;
-      this.showSites = false;
-      this.showCourse = true;
-      let path = 'http://localhost:5000/';
-      path += this.curr_site;
-      path += '/';
-      path += this.curr_course;
-      path += '/';
-      path += index;
+    getCourseMaterial(courseTitle) {
+      const path = `http://localhost:5000/${this.constructedString}/${courseTitle}`;
+      console.log(path);
       axios.get(path)
         .then((res) => {
-          this.week_items = res.data;
+          console.log(res);
+          this.courseMaterial = res.data.courseMaterial;
+          this.showMoocs = false;
+          this.showCourses = false;
+          this.showCourseMaterial = true;
+          this.constructedString += `/${courseTitle}`;
         })
         .catch((error) => {
           // eslint-disable-next-line
           console.error(error);
         });
+    },
+    getVideo(weekTitle, videoTitle) {
+      const path = `./${this.constructedString}/${weekTitle}/${videoTitle}`;
+      const xhr = new XMLHttpRequest();
+      xhr.open('HEAD', path, false);
+      xhr.send();
+      if (xhr.status === 404) {
+        console.log('sorry, file not found');
+      } else {
+        this.video = path;
+      }
     },
   },
   created() {
-    this.getCourses();
+    this.getMoocs();
   },
 };
 </script>
+
 <style>
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 </style>
