@@ -6,46 +6,52 @@
         <hr><br>
         <button v-if="showCourses || showCourseMaterial" v-on:click="getMoocs">Вернуться к ресурсам
         </button>
-        <table v-if="showMoocs" class="table table-hover">
+        <table v-if="showMoocs" class="table table-hover table-bordered">
           <thead>
             <tr>
-              <th class="text-center" scope="col" colspan="3" >Названия ресурсов</th>
+              <th class="text-center" scope="col" colspan="100%" >Названия ресурсов</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(mooc, index) in moocs" :key="index">
-              <td><button v-on:click="getCourses(mooc)" :value="mooc">{{ mooc }}
+              <td><button class="list-group-item list-group-item-action"
+              v-on:click="getCourses(mooc)" :value="mooc">{{ mooc }}
               </button></td>
             </tr>
           </tbody>
         </table>
 
-        <table v-if="showCourses" class="table table-hover">
+        <table v-if="showCourses" class="table table-hover table-bordered">
           <thead>
             <tr>
-              <th class="text-center" scope="col" colspan="3">Доступные курсы</th>
+              <th class="text-center" scope="col" colspan="100%">Доступные курсы</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(course, index) in courses" :key="index">
-              <td><button v-on:click="getCourseMaterial(course.acronym)" :value="course.acronym" >
-                    {{course.acronym}} : {{ course.title }}</button>
+            <tr class="text-center" v-for="(course, index) in courses" :key="index">
+              <td>
+                 <button class="list-group-item list-group-item-action"
+                    v-on:click="getCourseMaterial(course.acronym)" :value="course.acronym">
+                    {{course.acronym}} : {{ course.title }}
+                 </button>
               </td>
-              <td v-for="(week, j) in course.weeks" :key="j">{{week}}</td>
+              <td class="text-center" v-for="(week, j) in course.weeks" :key="j">{{week}}</td>
             </tr>
           </tbody>
         </table>
 
         <div v-if="showCourseMaterial">
-        <video v-if="video" :key="video" controls>
+        <video class="embed-responsive-item"
+        v-if="video" :key="video" controls width="500" height="400">
         <source :src="video">
         </video>
-          <ul>
+          <ul role="button" class="list-group">
             <details open v-for="(week, index) in courseMaterial.weeks_info" :key="index">
-            <summary>{{week.week_title}}</summary>
-                <ul>
+            <summary class="font-weight-bold">{{week.week_title}}</summary>
+                <ul class="list-group">
                   <li v-for="(video, j) in week.videos" :key="j">
-                  <button v-on:click="getVideo(week.week_title, video)"> {{ video }} </button></li>
+                  <button class="list-group-item list-group-item-action"
+                  v-on:click="getVideo(week.week_title, video)"> {{ video }} </button></li>
                 </ul>
             </details>
           </ul>
