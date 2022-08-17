@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Moocs from '../components/Moocs.vue';
 import Courses from '../components/Courses.vue';
 import CourseMaterials from '../components/CourseMaterials.vue';
+import NotFound from '../components/NotFound.vue';
 
 Vue.use(VueRouter);
 

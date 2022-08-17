@@ -5,6 +5,18 @@ from flask_cors import CORS
 # configuration
 DEBUG = True
 
+"""
+MOOCs = [
+    {
+        'title': 'Coursera',
+        'courses': ["DeepLearning", "Crypto-I"]
+    },
+    {
+        'title': 'Stepik',
+        'courses': ["Web-1", "JS-1"]
+    }
+]
+"""
 
 MOOCs = [
     {
@@ -63,6 +75,12 @@ app.config.from_object(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 
+def not_found(message):
+    response = jsonify({'message': message})
+    response.status_code = 404
+    return response
+
+
 @app.route('/', methods=['GET'])
 def get_moocs():
     moocs_titles = []
@@ -79,7 +97,7 @@ def get_courses(mooc):
             courses_needed = [x for x in MOOCs[i]['courses']]
             response_object = {'status': 'success', 'courses': courses_needed}
             return jsonify(response_object)
-    abort(404)
+    return not_found('Course not found, please try again later')
 
 
 @app.route('/<mooc>/<course>', methods=['GET'])
@@ -91,7 +109,7 @@ def get_materials(mooc, course):
                 if found_courses[j]['acronym'] == course:
                     response_object = {'status': 'success', 'courseMaterial': found_courses[j]}
                     return jsonify(response_object)
-    abort(404)
+    return not_found('Course material not found, please try again later')
 
 
 @app.route('/<mooc>/<course>/<week_number>', methods=['GET'])

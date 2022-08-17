@@ -5,6 +5,7 @@
         <h1>MOOCs</h1>
         <hr><br>
         <router-link to="/"><button>Вернуться к ресурсам</button></router-link>
+        <div v-if="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
         <div>
         <video class="embed-responsive-item"
         v-if="video" :key="video" controls width="500" height="400">
@@ -36,6 +37,7 @@ export default {
       video: '',
       courseMaterial: [],
       constructedString: '',
+      errorMessage: '',
     };
   },
   methods: {
@@ -55,13 +57,19 @@ export default {
     },
     getVideo(weekTitle, videoTitle) {
       const path = `./${this.constructedString}/${weekTitle}/${videoTitle}`;
+      if (path === this.video) {
+        this.video = '';
+        return;
+      }
       const xhr = new XMLHttpRequest();
       xhr.open('HEAD', path, false);
       xhr.send();
       if (xhr.status === 404) {
-        console.log('sorry, file not found');
+        this.errorMessage = 'Sorry, video is not found';
+        this.video = '';
       } else {
         this.video = path;
+        this.errorMessage = '';
       }
     },
   },
