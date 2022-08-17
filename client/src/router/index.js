@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Moocs from '../components/Moocs.vue';
+import Courses from '../components/Courses.vue';
+import CourseMaterials from '../components/CourseMaterials.vue';
 
 Vue.use(VueRouter);
 
@@ -9,6 +11,16 @@ const routes = [
     path: '/',
     name: 'Moocs',
     component: Moocs,
+  },
+  {
+    path: '/mooc/:site',
+    name: 'Courses',
+    component: Courses,
+  },
+  {
+    path: '/mooc/:site/course/:acronym',
+    name: 'CourseMaterials',
+    component: CourseMaterials,
   },
   {
     path: '/about',
