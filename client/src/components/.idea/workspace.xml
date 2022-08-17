@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa0efca3-dc1e-47ec-a940-b06726f5cfc2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../node_modules/.cache/babel-loader/98041804206e0ec250d7bec3d7c7659e.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/.cache/babel-loader/98041804206e0ec250d7bec3d7c7659e.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/29aca3887a8b05d394b9568fa36e8502.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/29aca3887a8b05d394b9568fa36e8502.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/5c9aa00fa69857da439560a9386cef70.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/5c9aa00fa69857da439560a9386cef70.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/939fb3420a0988c24ec3f1dded1a7227.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/939fb3420a0988c24ec3f1dded1a7227.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/ae2385fc0e648ada33e86627ebcc0d67.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/ae2385fc0e648ada33e86627ebcc0d67.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/b277980efaeb15f8d26b9ea1acbddaba.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/.cache/vue-loader/b277980efaeb15f8d26b9ea1acbddaba.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cours.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Cours.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../server/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +49,7 @@
       <workItem from="1660552167366" duration="4000" />
       <workItem from="1660552382191" duration="1010000" />
       <workItem from="1660630412603" duration="10821000" />
+      <workItem from="1660717645102" duration="5760000" />
     </task>
     <servers />
   </component>

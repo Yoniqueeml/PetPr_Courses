@@ -21,7 +21,6 @@
           </tr>
           </tbody>
         </table>
-
         <table v-if="showCourses" class="table table-hover table-bordered table-dark">
           <thead>
           <tr>
@@ -42,10 +41,6 @@
         </table>
 
         <div v-if="showCourseMaterial">
-          <video class="embed-responsive-item"
-                 v-if="video" :key="video" controls width="500" height="400">
-            <source :src="video">
-          </video>
           <h1 role="button" class="list-group" style="padding-left: 16px;">
             <details open v-for="(week, index) in courseMaterial.weeks_info" :key="index">
               <summary class="btn bg-dark text-white">{{week.week_title}}</summary>
@@ -55,6 +50,12 @@
                           v-on:click="getVideo(week.week_title, video)"> {{ video }} </button></li>
               </h2>
             </details>
+            <ul class="video_move">
+              <video class="embed-responsive-item outline-secondary"
+                     v-if="video" :key="video" controls width="700" height="600">
+                <source :src="video">
+              </video>
+            </ul>
           </h1>
         </div>
       </div>
@@ -149,5 +150,9 @@ export default {
 </script>
 
 <style>
-
+.video_move{
+  position: absolute;
+  bottom: -55px;
+  left: 580px;
+}
 </style>
