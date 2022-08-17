@@ -1,4 +1,3 @@
 to do:
-<br>animations on pages
-<br>padding video 
-<br>background
+<br>animations on pages(how?)
+<br>padding video (done)
