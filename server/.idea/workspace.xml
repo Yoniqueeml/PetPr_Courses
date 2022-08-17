@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc02b69d-877d-47a4-8921-99b8a9e267d0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../client/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/Cours.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Cours.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />

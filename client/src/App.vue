@@ -1,10 +1,22 @@
 <template>
   <div id="app">
     <vue-page-transition name="fade">
+      <particles-bg type="square" :canvas="{backgroundColor:'#888'}" :bg="true"/>
     <router-view/>
     </vue-page-transition>
   </div>
 </template>
+
+<script>
+import { ParticlesBg } from "particles-bg-vue";
+
+export default {
+  name: "App",
+  components: {
+    ParticlesBg
+  }
+};
+</script>
 
 <style>
 #app {

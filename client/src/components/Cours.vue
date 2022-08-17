@@ -150,7 +150,10 @@ export default {
 </script>
 
 <style>
-.video_move{
+@import './Home.scss';
+@import './BirthdayCake.scss';
+
+.video_move {
   position: absolute;
   bottom: -55px;
   left: 580px;
