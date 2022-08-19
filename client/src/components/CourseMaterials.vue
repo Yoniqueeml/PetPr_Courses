@@ -6,14 +6,16 @@
         <hr><br>
         <router-link to="/"><button class="btn btn-primary">
 Вернуться к ресурсам</button></router-link>
-        <div v-if="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
-        <div>
-          <ul role="button" class="list-group">
+        <span v-if="errorMessage" class="error-position alert alert-danger">
+        {{errorMessage}}
+        </span>
+        <div style="padding-right:100px; padding-top:20px">
+          <ul role="button" class="list-group" style="padding-left:25px">
             <details open v-for="(week, index)
-in courseMaterial.weeks_info" :key="index" style="padding-right: 0px;">
-            <summary class="btn bg-dark text-white" style="padding-right: 20px;">
+in courseMaterial.weeks_info" :key="index">
+            <summary class="btn bg-dark text-white">
 {{week.week_title}}</summary>
-                <h2 class="list-group" style="padding-right: 300px;">
+                <h2 class="list-group" style="padding-left: 61px;">
                   <li v-for="(video, j) in week.videos" :key="j">
                   <button class="btn bg-secondary text-white"
                   v-on:click="getVideo(week.week_title, video)"> {{ video }} </button></li>
@@ -23,7 +25,7 @@ in courseMaterial.weeks_info" :key="index" style="padding-right: 0px;">
         </div>
       </div>
 <ul class="video_move">
-<Transition mode="out-in">
+<Transition name="video_transition" mode="out-in">
         <video class="embed-responsive-item outline-secondary"
         v-if="video" :key="video" controls width="600" height="500">
         <source :src="video">
@@ -94,13 +96,17 @@ export default {
   bottom: 230px;
   left: 910px;
 }
-.v-enter-active,
-.v-leave-active {
+.video_transition-enter-active,
+.video_transition-leave-active {
   transition: opacity 0.6s ease;
 }
-
-.v-enter,
-.v-leave-to {
+.video_transition-enter,
+.video_transition-leave-to {
   opacity: 0;
+}
+.error-position {
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
 }
 </style>
