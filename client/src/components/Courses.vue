@@ -4,8 +4,8 @@
       <div class="col-sm-10">
         <h1 class="col-md-6 mb-4 wow zoomIn">MOOCs</h1>
         <hr><br>
-        <router-link to="/"><button class="btn btn-primary">Вернуться к ресурсам</button></router-link>
-
+        <router-link to="/"><button class="btn btn-primary">
+Вернуться к ресурсам</button></router-link>
         <table class="table table-hover table-bordered table-dark">
           <thead>
             <tr>

@@ -23,10 +23,12 @@ in courseMaterial.weeks_info" :key="index" style="padding-right: 0px;">
         </div>
       </div>
 <ul class="video_move">
+<Transition mode="out-in">
         <video class="embed-responsive-item outline-secondary"
         v-if="video" :key="video" controls width="600" height="500">
         <source :src="video">
         </video>
+</Transition>
 </ul>
     </div>
   </div>
@@ -91,5 +93,14 @@ export default {
   position: absolute;
   bottom: 230px;
   left: 910px;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.6s ease;
+}
+
+.v-enter,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
